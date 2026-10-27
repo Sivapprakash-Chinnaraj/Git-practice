@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Little Idea Generator</title>
+	<style>
+		* { box-sizing: border-box; }
+		body {
+			min-height: 100vh;
+			margin: 0;
+			display: grid;
+			place-items: center;
+			padding: 24px;
+			color: #23304a;
+			font: 16px/1.5 system-ui, sans-serif;
+			background: linear-gradient(135deg, #d9f3ff, #f8e3ff);
+		}
+		main {
+			width: min(100%, 440px);
+			padding: 36px;
+			text-align: center;
+			background: #ffffffd9;
+			border: 1px solid #fff;
+			border-radius: 24px;
+			box-shadow: 0 18px 50px #35476b20;
+		}
+		.sparkle { font-size: 3rem; }
+		h1 { margin: 8px 0; font-size: 1.8rem; }
+		p { color: #59657b; }
+		#idea { min-height: 3em; margin: 24px 0; font-size: 1.15rem; }
+		button {
+			padding: 12px 20px;
+			color: white;
+			font: inherit;
+			font-weight: 700;
+			background: #6758d8;
+			border: 0;
+			border-radius: 999px;
+			cursor: pointer;
+		}
+		button:hover { background: #5142c3; }
+		button:focus-visible { outline: 3px solid #30258f; outline-offset: 3px; }
+	</style>
+</head>
+<body>
+	<main>
+		<div class="sparkle" aria-hidden="true">✨</div>
+		<h1>A little idea for you</h1>
+		<p>Need a spark of inspiration? Tap the button.</p>
+		<p id="idea" aria-live="polite">Make up a new holiday and celebrate it today.</p>
+		<button id="idea-button" type="button">Surprise me</button>
+	</main>
+	<script>
+		const ideas = [
+			"Draw a tiny map of a place that only exists in your imagination.",
+			"Invent a sandwich named after your favorite color.",
+			"Take a five-minute walk and notice three new things.",
+			"Write a one-sentence story about a very polite dragon.",
+			"Make up a new holiday and celebrate it today."
+		];
+		const idea = document.querySelector("#idea");
+		document.querySelector("#idea-button").addEventListener("click", () => {
+			const options = ideas.filter((item) => item !== idea.textContent);
+			idea.textContent = options[Math.floor(Math.random() * options.length)];
+		});
+	</script>
+</body>
+</html>
